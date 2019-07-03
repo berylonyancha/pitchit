@@ -8,3 +8,6 @@ class PitchForm(FlaskForm):
     category = SelectField("Pitch category",choices=[('Pickup Lines','Pickup Lines'),('Interview Pitch','Interview Pitch'),('Product Pitch','Promotion Pitch')],validators=[Required()])
     submit = SubmitField('Submit')
 
+class UpdateProfile(FlaskForm):
+    bio = TextAreaField("Write something about yourself.",validators=[Required()])
+    submit = SubmitField('Submit')
