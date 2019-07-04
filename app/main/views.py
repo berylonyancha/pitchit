@@ -29,3 +29,35 @@ def post():
 
     title="Post your pitch"
     return render_template('post.html',title=title,pitch_form=form)
+@main.route('/pitch_review/<int:id>',methods=['GET','POST'])
+@login_required
+def pitch_review(id):
+    pitch=Pitch.query.get_or_404(id)
+    comment= Review.query.all()
+    form=ReviewForm()
+
+    if request.args.get("like"):
+        pitch.like = pitch.like+1
+
+        db.session.add(pitch)
+        db.session.commit()
+
+        return redirect("/pitch_review/{pitch_id}".format(pitch_id=pitch.id))
+
+    elif request.args.get("dislike"):
+        pitch.dislike=pitch.dislike+1
+
+        db.session.add(pitch)
+        db.session.commit()
+
+        return redirect("/pitch_review/{pitch_id}".format(pitch_id=pitch.id))
+
+    if form.validate_on_submit():
+        review = form.review.data
+
+        new_review = Review(id=id,review=review,user_id=current_user.id)
+
+        new_review.save_review()
+        return redirect(url_for('main.pitch_review',id=id))
+    reviews = Review.query.all()
+    return render_template('pitch_review.html',comment=comment,pitch=pitch,review_form=form,reviews=reviews)
