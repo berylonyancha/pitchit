@@ -42,6 +42,6 @@ def create_app(config_name):
     #Configure UploadSet
     configure_uploads(app,photos)
 
-    #Will add the views and forms
+    
 
     return app

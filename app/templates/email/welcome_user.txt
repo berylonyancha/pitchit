@@ -1,0 +1,3 @@
+Hello {{user.username}}
+Welcome to Pitch It!
+Thank you for signing up into pitch. Hope you enjoy your experience using our website. Feel free to post pitches, vote and comment on other people's pitches.

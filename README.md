@@ -16,3 +16,4 @@ This project was generated using python version 3.6. This project allows users t
 To get more help on the Python CLI use ng help or go check out the Python CLI README and Python documentation. You may also read the news API documentation on the news API website.
 ## CONTACT INFORMATION
 By me some tea through my email address : berylonyancha@gmail.com
+
