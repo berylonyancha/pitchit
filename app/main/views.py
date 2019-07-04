@@ -61,3 +61,12 @@ def pitch_review(id):
         return redirect(url_for('main.pitch_review',id=id))
     reviews = Review.query.all()
     return render_template('pitch_review.html',comment=comment,pitch=pitch,review_form=form,reviews=reviews)
+@main.route('/user/<uname>')
+def profile(uname):
+    user=User.query.filter_by(username=uname).first()
+    pitches = Pitch.query.filter_by(user_id=user.id).all()
+
+    if user is None:
+        abort(404)
+
+    return render_template("profile/profile.html",user=user,pitches=pitches)
